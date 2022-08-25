@@ -6,7 +6,17 @@ import java.util.List;
 
 @Service
 public class CalculatorService {
-    public List<Calculator> getSum(){
-        return List.of(new Calculator(5, 10));
+    public List<SumValue> getSum(int firstNumber, int secondNumber){
+        Calculator calc = new Calculator(firstNumber, secondNumber);
+        SumValue sum = new SumValue(calc.add(calc.getFirstNumber(), calc.getSecondNumber()));
+        return List.of(sum);
     }
+
+    public List<SubtractValue> getSubtract(int firstNumber, int secondNumber){
+        Calculator calc = new Calculator(firstNumber, secondNumber);
+        SubtractValue subtract = new SubtractValue(calc.subtract(calc.getFirstNumber(), calc.getSecondNumber()));
+        return List.of(subtract);
+
+    }
+
 }
